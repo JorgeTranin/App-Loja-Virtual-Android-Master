@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -39,6 +40,23 @@ android {
 }
 
 dependencies {
+    //Firebase
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.google.firebase:firebase-auth:22.3.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+    //retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-scalars:2.4.0")
+
+
+    //gson
+    implementation ("com.google.code.gson:gson:2.9.0")
+
+    //Mercado Pago
+    //implementation ("com.mercadopago.android.px:checkout:4.20.0")
+    implementation ("androidx.browser:browser:1.4.0")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
