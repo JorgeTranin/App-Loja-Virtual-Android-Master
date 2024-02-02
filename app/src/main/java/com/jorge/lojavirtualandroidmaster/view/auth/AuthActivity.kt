@@ -16,7 +16,11 @@ class AuthActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.loginFragment) as NavHostFragment
         val navController = navHostFragment.navController
+
+
     }
+
+
 
 
 }
