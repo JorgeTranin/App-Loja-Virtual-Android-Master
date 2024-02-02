@@ -15,4 +15,5 @@
     <string name="nome">Nome</string>
     <string name="text_email_hint">E-Mail</string>
     <string name="password_exemple">********</string>
+    <string name="email">E-mail</string>
 </resources>
