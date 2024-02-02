@@ -1,10 +1,12 @@
 package com.jorge.lojavirtualandroidmaster.view.auth
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -38,6 +40,7 @@ class RegisterFragment : Fragment() {
     private fun setupListeners() {
         binding.btnCadastrar.setOnClickListener {
 
+            binding.progressBarTelaCadastro.isVisible = true
             val check = checkFields()
             if (check){
                 val email = binding.etEmail.text.toString()
@@ -55,8 +58,10 @@ class RegisterFragment : Fragment() {
                 auth.signInWithEmailAndPassword(email, password)
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
+                binding.progressBarTelaCadastro.isVisible = false
             }else{
                 Snackbar.make(binding.root, task.exception.toString() ,Snackbar.LENGTH_LONG).show()
+                binding.progressBarTelaCadastro.isVisible = false
             }
 
         }
@@ -64,7 +69,7 @@ class RegisterFragment : Fragment() {
 
     private fun checkFields(): Boolean {
         if (binding.etEmail.text.isNullOrEmpty() || binding.etNome.text.isNullOrEmpty() || binding.etPassword.text.isNullOrEmpty()){
-            Snackbar.make(binding.root, "Preencha todos os campos" ,Snackbar.LENGTH_LONG).show()
+            Snackbar.make(binding.root, "Preencha todos os campos" ,Snackbar.LENGTH_LONG).setBackgroundTint(Color.RED) .show()
             return false
         }else{
             return true
