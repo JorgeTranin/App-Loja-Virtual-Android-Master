@@ -19,4 +19,7 @@
     <string name="email">E-mail</string>
     <string name="more">more</string>
     <string name="logout">Log out</string>
+    <string name="perfil">Perfil</string>
+    <string name="text_dialog_carregando">Carregando...</string>
+    <string name="pedidos">Pedidos</string>
 </resources>

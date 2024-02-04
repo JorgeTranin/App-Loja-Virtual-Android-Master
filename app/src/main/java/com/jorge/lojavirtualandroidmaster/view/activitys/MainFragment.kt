@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.jorge.lojavirtualandroidmaster.R
 import com.jorge.lojavirtualandroidmaster.databinding.FragmentMainBinding
 import com.jorge.lojavirtualandroidmaster.view.auth.AuthActivity
@@ -16,7 +18,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
 
-    private val auth = FirebaseAuth.getInstance()
+    private lateinit var auth : FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,20 +37,22 @@ class MainFragment : Fragment() {
     private fun setupListeners() {
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.logout -> {
-                    auth.signOut()
-                    val intent = Intent(requireContext(), AuthActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
 
-                R.id.more -> {
+
+                R.id.perfil -> {
                     // Handle search icon press
                     true
                 }
 
                 R.id.more -> {
 
+                    true
+                }
+                R.id.logout -> {
+                    auth = Firebase.auth
+                    auth.signOut()
+                    val intent = Intent(requireContext(), AuthActivity::class.java)
+                    startActivity(intent)
                     true
                 }
 
