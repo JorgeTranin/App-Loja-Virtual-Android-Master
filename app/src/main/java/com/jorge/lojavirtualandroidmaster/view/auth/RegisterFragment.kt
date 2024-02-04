@@ -6,12 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Firebase
+import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthEmailException
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
@@ -76,6 +81,16 @@ class RegisterFragment : Fragment() {
                 Snackbar.make(binding.root, task.exception.toString() ,Snackbar.LENGTH_LONG).show()
                 binding.progressBarTelaCadastro.isVisible = false
             }
+
+        }.addOnFailureListener {errorRegister ->
+
+            val msgError = when(errorRegister){
+                is FirebaseAuthWeakPasswordException -> "Digite um senha com no minimo 6 caracteres"
+                is FirebaseAuthUserCollisionException -> "Email já cadastrado"
+                is FirebaseNetworkException -> "Sem conexão com a internet"
+                else -> "Erro no cadastro"
+            }
+            Toast.makeText(requireContext(), msgError, Toast.LENGTH_LONG).show()
 
         }
     }

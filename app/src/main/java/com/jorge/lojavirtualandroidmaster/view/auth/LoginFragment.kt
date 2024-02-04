@@ -28,7 +28,6 @@ class LoginFragment : Fragment() {
         val view = binding.root
         return view
 
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,13 +35,12 @@ class LoginFragment : Fragment() {
         auth = Firebase.auth
         val currentUser = auth.currentUser
 
-        if (currentUser != null){
+        if (currentUser != null) {
             val intent = Intent(requireContext(), MainActivity::class.java)
             startActivity(intent)
         }
         setupListeners()
     }
-
 
 
     private fun setupListeners() {
@@ -56,13 +54,14 @@ class LoginFragment : Fragment() {
         }
     }
 
-    private fun checkLogin(email: String, password:String) {
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{ task ->
-            if(task.isSuccessful){
+    private fun checkLogin(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
                 val intent = Intent(requireContext(), MainActivity::class.java)
                 startActivity(intent)
-            }else{
-                Snackbar.make(binding.cardView, task.exception.toString(), Snackbar.LENGTH_LONG).show()
+            } else {
+                Snackbar.make(binding.cardView, task.exception.toString(), Snackbar.LENGTH_LONG)
+                    .show()
             }
         }
     }

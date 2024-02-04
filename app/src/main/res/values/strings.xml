@@ -6,6 +6,7 @@
     <string name="email_exemple">exemplo@email.com</string>
     <string name="senha">Senha</string>
     <string name="entrar">Entrar</string>
+
     <string name="nao_tem_uma_conta">Não tem uma conta?</string>
     <string name="cadastre_se_agora">Cadastre-se Agora!</string>
     <string name="loja"><b>Loja</b></string>
@@ -16,4 +17,6 @@
     <string name="text_email_hint">E-Mail</string>
     <string name="password_exemple">********</string>
     <string name="email">E-mail</string>
+    <string name="more">more</string>
+    <string name="logout">Log out</string>
 </resources>
